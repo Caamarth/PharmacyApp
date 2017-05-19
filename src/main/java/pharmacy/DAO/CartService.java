@@ -11,16 +11,20 @@ import pharmacy.model.Medication;
  */
 public class CartService {
 
-    private static ObservableList<Medication> purchaseCart
-        = FXCollections.observableArrayList();
+    private ObservableList<Medication> purchaseCart;
+
 
 	/**Paraméter nélküli konstruktor, amely
 	 * inicializálja a {@link pharmacy.DAO.CartService}
 	 * osztályt.
 	 */
     public CartService() {
-		purchaseCart.clear();
+    	purchaseCart = FXCollections.observableArrayList();
 	}
+    
+    public CartService(ObservableList<Medication> purchaseCart){
+    	this.purchaseCart = purchaseCart;
+    }
 
 	/**Visszaadja a kosárban található
 	 * gyógyszerek listáját.
@@ -42,7 +46,7 @@ public class CartService {
 	 * @param medication egy gyógyszer objektum
 	 */
     public final void removeFromCart(final Medication medication) {
-		purchaseCart.remove(medication.getId());
+		purchaseCart.remove(medication);
 	}
 
 	/**Visszaadja a kosárban lévő gyógyszerek

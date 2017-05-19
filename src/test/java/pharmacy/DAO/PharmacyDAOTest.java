@@ -142,6 +142,7 @@ public class PharmacyDAOTest {
 		patientTest.setPatientRank(0);
 		
 		Assert.assertEquals(patientTest, pharmacyDAO.createPatient("111111111", "Tesztnév", "Tesztcím", DateUtil.parse("1990.01.01"), 0));
+		Assert.assertEquals(patientTest.hashCode(), pharmacyDAO.createPatient("111111111", "Tesztnév", "Tesztcím", DateUtil.parse("1990.01.01"), 0).hashCode());
 	}
 	
 	@Test
@@ -156,6 +157,7 @@ public class PharmacyDAOTest {
 		medicationTest.setSupportedMed(0);
 		
 		Assert.assertEquals(medicationTest, pharmacyDAO.createMedication("Teszt", "Teszt", 300, 30, "Teszt", 3000, 0));
+		Assert.assertEquals(medicationTest.hashCode(), pharmacyDAO.createMedication("Teszt", "Teszt", 300, 30, "Teszt", 3000, 0).hashCode());
 	}
 	
 	@Test
@@ -167,5 +169,6 @@ public class PharmacyDAOTest {
 		purchaseTest.setPrice(9000);
 		
 		Assert.assertEquals(purchaseTest, pharmacyDAO.createPurchase(patient, 9000, DateUtil.parse("2010.01.01"), medicationList));
+		Assert.assertEquals(purchaseTest.hashCode(), pharmacyDAO.createPurchase(patient, 9000, DateUtil.parse("2010.01.01"), medicationList).hashCode());
 	}
 }

@@ -37,6 +37,10 @@ public class PurchaseService {
 		 purchases = FXCollections.observableArrayList(pharmacyDAO.getPurchasesList());
     }
 	
+	public PurchaseService(ObservableList<Purchase> purchases){
+		this.purchases = purchases;
+	}
+	
 	public void updateList(){
 		ObservableList<Purchase> purchaseList = FXCollections.observableArrayList(pharmacyDAO.getPurchasesList());
 		purchases.removeAll(purchases);

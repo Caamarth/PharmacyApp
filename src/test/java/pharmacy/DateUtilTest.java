@@ -19,10 +19,23 @@ public class DateUtilTest {
 	}
 	
 	@Test
+	public void testFormatterFail(){
+		localDateTest = null;
+		Assert.assertEquals(null, DateUtil.format(localDateTest));
+		
+	}
+	
+	@Test
 	public void testParser(){
 		testString = "1990.07.29";
 		localDateTest = LocalDate.of(1990, 07, 29);
 		Assert.assertEquals(localDateTest, DateUtil.parse(testString));
+	}
+	
+	@Test
+	public void testParserFail(){
+		testString = "1876-11-07";
+		Assert.assertEquals(null, DateUtil.parse(testString));
 	}
 	
 	@Test

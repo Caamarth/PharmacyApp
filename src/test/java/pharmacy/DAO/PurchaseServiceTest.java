@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import pharmacy.model.Medication;
 import pharmacy.model.Purchase;
 
@@ -11,11 +13,12 @@ public class PurchaseServiceTest {
 	private static PurchaseService purchaseService;
 	private static Purchase purchase;
 	private static Medication medication;
+	private static ObservableList<Purchase> purchaseList;
 	
 	@BeforeClass
 	public static void initialize(){
 
-		
+		purchaseList = FXCollections.observableArrayList();
 		medication = new Medication();
 		medication.setId(999);
 		medication.setName("Teszt");
@@ -26,8 +29,9 @@ public class PurchaseServiceTest {
 		purchase.setId(9999);
 		purchase.getMedicationList().add(medication);
 		purchase.setPrice(9000);
+		purchaseList.add(purchase);
 		
-		purchaseService = new PurchaseService();
+		purchaseService = new PurchaseService(purchaseList);
 		
 	}
 	
