@@ -31,7 +31,12 @@ public class MedicationService {
 	 *
 	 */
 	public MedicationService() {
+		
     }
+	
+	public MedicationService(ObservableList<Medication> medications){
+		this.medications = medications;
+	}
 	
 	public void updateList(){
 		ObservableList<Medication> medicationList = FXCollections.observableArrayList(pharmacyDAO.getMedicationsList());

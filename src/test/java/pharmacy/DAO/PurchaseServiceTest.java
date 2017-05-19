@@ -14,7 +14,7 @@ public class PurchaseServiceTest {
 	
 	@BeforeClass
 	public static void initialize(){
-		purchaseService = new PurchaseService();
+
 		
 		medication = new Medication();
 		medication.setId(999);
@@ -26,6 +26,8 @@ public class PurchaseServiceTest {
 		purchase.setId(9999);
 		purchase.getMedicationList().add(medication);
 		purchase.setPrice(9000);
+		
+		purchaseService = new PurchaseService();
 		
 	}
 	

@@ -20,7 +20,7 @@ public class MedicationServiceTest {
 	
 	@BeforeClass
 	public static void inicialize(){
-		medicationService = new MedicationService();
+
 		
 		medication = new Medication();
 		medication.setId(999);
@@ -36,6 +36,8 @@ public class MedicationServiceTest {
 		medicationObsList.add(medication);
 		medicationList = new ArrayList<Medication>();
 		medicationList.add(medication);
+		
+		medicationService = new MedicationService(medicationObsList);
 		
 	}
 	
