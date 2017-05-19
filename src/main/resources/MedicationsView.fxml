@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pharmacy.view.MedicationsViewController">
+   <children>
+      <SplitPane dividerPositions="0.38095238095238093" layoutX="265.0" layoutY="96.0" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <TableView fx:id="medicationTableView" layoutX="109.0" layoutY="45.0" prefHeight="598.0" prefWidth="395.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                      <TableColumn fx:id="medicationNameColumn" prefWidth="150.0" text="Gyógyszer neve" />
+                      <TableColumn fx:id="manufacturerColumn" prefWidth="150.0" text="Gyártó" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" text="Gyógyszer adatai">
+                     <font>
+                        <Font name="System Bold Italic" size="16.0" />
+                     </font>
+                  </Label>
+                  <GridPane layoutX="14.0" layoutY="56.0" prefHeight="350.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="187.0" minWidth="10.0" prefWidth="153.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="232.0" minWidth="10.0" prefWidth="232.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Gyógyszer azonosító:">
+                           <font>
+                              <Font name="System Italic" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label text="Gyógyszer neve:" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Italic" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label text="Gyártó neve:" GridPane.rowIndex="2" />
+                        <Label text="Hatóanyag dózis:" GridPane.rowIndex="3" />
+                        <Label text="Tabletták száma:" GridPane.rowIndex="4" />
+                        <Label text="Leírás:" GridPane.rowIndex="5" />
+                        <Label text="Egységár:" GridPane.rowIndex="6" />
+                        <Label fx:id="medicineIdLabel" text="Label" GridPane.columnIndex="1" />
+                        <Label fx:id="medicineNameLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="medicineManufacturerLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="medicineDoseLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="medicineQuantityLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label fx:id="medicineDescriptionLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Label fx:id="medicineUnitpriceLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <Label text="TB-támogatott:" GridPane.rowIndex="7" />
+                        <Label fx:id="supportedMedLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                     </children>
+                  </GridPane>
+                  <Button fx:id="deleteMedicationButton" layoutX="220.0" layoutY="550.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Törlés" />
+                  <Button fx:id="editMedicationButton" layoutX="120.0" layoutY="550.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Módosítás" />
+                  <Button fx:id="newMedicationButton" layoutX="20.0" layoutY="550.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Új" />
+                  <Button fx:id="medicationToMainButton" layoutX="380.0" layoutY="550.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Vissza" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
