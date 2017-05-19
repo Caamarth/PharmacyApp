@@ -19,19 +19,22 @@ import pharmacy.model.Purchase;
  */
 public class PurchaseService {
 	
-	EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("MainApp");
-	EntityManager entityManager = entityManagerFactory.createEntityManager();
+	EntityManagerFactory entityManagerFactory;
+	EntityManager entityManager;
 	
-	private PharmacyDAO pharmacyDAO = new PharmacyDAO(entityManager);
+	private PharmacyDAO pharmacyDAO;
 
-	public ObservableList<Purchase> purchases = FXCollections.observableArrayList(pharmacyDAO.getPurchasesList());
+	public ObservableList<Purchase> purchases;
 	
 	/**Paraméter nélküli konstruktor, amely
 	 *létrehoz egy {@link pharmacy.DAO.PurchaseService}
 	 *objektumot.
 	 */
 	public PurchaseService() {	
-
+		entityManagerFactory = Persistence.createEntityManagerFactory("MainApp");
+		 entityManager = entityManagerFactory.createEntityManager();
+		 pharmacyDAO = new PharmacyDAO(entityManager);
+		 purchases = FXCollections.observableArrayList(pharmacyDAO.getPurchasesList());
     }
 	
 	public void updateList(){

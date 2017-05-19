@@ -17,13 +17,13 @@ import pharmacy.model.Medication;
  */
 public class MedicationService {
 	
-	EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("MainApp");
-	EntityManager entityManager = entityManagerFactory.createEntityManager();
+	EntityManagerFactory entityManagerFactory;
+	EntityManager entityManager;
 	
-	private PharmacyDAO pharmacyDAO = new PharmacyDAO(entityManager);
+	private PharmacyDAO pharmacyDAO;
 	
-	public ObservableList<Medication> medications
-        = FXCollections.observableArrayList(pharmacyDAO.getMedicationsList());
+	public ObservableList<Medication> medications;
+        
 
 	/**Paraméter nélküli konstruktor, amely
 	 * létrehozza a {@link pharmacy.DAO.MedicationService}
@@ -31,7 +31,10 @@ public class MedicationService {
 	 *
 	 */
 	public MedicationService() {
-		
+		entityManagerFactory = Persistence.createEntityManagerFactory("MainApp");
+		entityManager = entityManagerFactory.createEntityManager();
+		pharmacyDAO = new PharmacyDAO(entityManager);
+		medications = FXCollections.observableArrayList(pharmacyDAO.getMedicationsList());
     }
 	
 	public MedicationService(ObservableList<Medication> medications){

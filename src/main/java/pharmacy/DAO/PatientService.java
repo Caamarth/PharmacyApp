@@ -14,10 +14,10 @@ import pharmacy.model.Patient;
  */
 public class PatientService {
 	
-	EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("MainApp");
-	EntityManager entityManager = entityManagerFactory.createEntityManager();
+	EntityManagerFactory entityManagerFactory;
+	EntityManager entityManager;
 	
-	private PharmacyDAO pharmacyDAO = new PharmacyDAO(entityManager);
+	private PharmacyDAO pharmacyDAO;
 	
 	private ObservableList<Patient> patients;
 	
@@ -26,6 +26,9 @@ public class PatientService {
 	 * objektumot.
 	 */
 	public PatientService() {
+		entityManagerFactory = Persistence.createEntityManagerFactory("MainApp");
+		entityManager = entityManagerFactory.createEntityManager();
+		pharmacyDAO = new PharmacyDAO(entityManager);
 		patients = FXCollections.observableArrayList(pharmacyDAO.getPatientsList());
     }
 	
