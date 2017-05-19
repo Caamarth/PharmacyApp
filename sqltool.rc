@@ -1,4 +1,0 @@
-urlid test
-url jdbc:hsqldb:hsql://localhost/test
-username sa
-password password
