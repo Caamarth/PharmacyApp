@@ -60,7 +60,6 @@ public class Medication {
 	}
 	
 	/**Kontruktor, mely létrehozza a gyógyszer objektumot.
-	 * @param id a gyógyszer azonosítója
 	 * @param name a gyógyszer neve
 	 * @param manufacturer a gyógyszer gyártójának neve
 	 * @param dose a gyógyszer dózisa

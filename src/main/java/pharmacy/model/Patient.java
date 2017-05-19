@@ -70,7 +70,6 @@ public class Patient {
 
 	/**
 	 * Konstruktor, mely létrehozza a beteg objektumot.
-	 * @param id a beteg azonosítója
 	 * @param tajszam a beteg TAJ-száma
 	 * @param name a beteg neve
 	 * @param address a beteg címe

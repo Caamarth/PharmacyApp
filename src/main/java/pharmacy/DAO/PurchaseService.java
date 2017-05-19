@@ -55,8 +55,10 @@ public class PurchaseService {
 
 	/**Hozzáad egy vásárlást a vásárlásokat
 	 *tartalmazó listához.
-	 * @param purchase a vásárlásokat
-	 *tartalmazó lista
+	 * @param patient a vásárláshoz tartozó beteg
+	 * @param price a vásárlás összege
+	 * @param date a vásárlás dátuma
+	 * @param medications a vásárolt gyógyszerek listája
 	 */
 	public void addPurchase(Patient patient, int price, LocalDate date, List<Medication> medications) {
 		entityManager.getTransaction().begin();

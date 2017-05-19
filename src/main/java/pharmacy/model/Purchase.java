@@ -42,10 +42,7 @@ public class Purchase{
 	}
 	
 	/**Konstruktor, amely létrehoz egy vásárlás objektumot.
-	 * @param id a vásárlás azonosítója
-	 * @param patientId a vásárló azonosítója
-	 * @param tajszam a vásárló TAJ-száma
-	 * @param medications a vásárolt gyógyszerek listája
+	 * @param patient a vásárláshoz tartozó beteg
 	 * @param price a vásárlás összege
 	 * @param date a vásárlás dátuma
 	 */
