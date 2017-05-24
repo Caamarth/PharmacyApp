@@ -24,7 +24,7 @@ public class PurchaseService {
 	
 	private PharmacyDAO pharmacyDAO;
 
-	public ObservableList<Purchase> purchases;
+	private ObservableList<Purchase> purchases;
 	
 	/**Paraméter nélküli konstruktor, amely
 	 *létrehoz egy {@link pharmacy.DAO.PurchaseService}
@@ -37,11 +37,14 @@ public class PurchaseService {
 		 purchases = FXCollections.observableArrayList(pharmacyDAO.getPurchasesList());
     }
 	
+	/**Paraméteres konytruktor az osztály JUnit teszteléséhez.
+	 * @param purchases a vásárlások listája
+	 */
 	public PurchaseService(ObservableList<Purchase> purchases){
 		this.purchases = purchases;
 	}
 	
-	public void updateList(){
+	protected void updateList(){
 		ObservableList<Purchase> purchaseList = FXCollections.observableArrayList(pharmacyDAO.getPurchasesList());
 		purchases.removeAll(purchases);
 		for(Purchase p : purchaseList){

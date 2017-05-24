@@ -22,7 +22,7 @@ public class MedicationService {
 	
 	private PharmacyDAO pharmacyDAO;
 	
-	public ObservableList<Medication> medications;
+	private ObservableList<Medication> medications;
         
 
 	/**Paraméter nélküli konstruktor, amely
@@ -37,11 +37,14 @@ public class MedicationService {
 		medications = FXCollections.observableArrayList(pharmacyDAO.getMedicationsList());
     }
 	
+	/**Paraméteres konstruktor az osztály JUnit teszteléséhez.
+	 * @param medications a gyógyszerek listája
+	 */
 	public MedicationService(ObservableList<Medication> medications){
 		this.medications = medications;
 	}
 	
-	public void updateList(){
+	protected void updateList(){
 		ObservableList<Medication> medicationList = FXCollections.observableArrayList(pharmacyDAO.getMedicationsList());
 		medications.removeAll(medications);
 		for(Medication m : medicationList){
@@ -59,6 +62,9 @@ public class MedicationService {
 		return medications;
 	}
 	
+	/**A paraméterül adott gyógyszert mentésre küldi az adatbázisba.
+	 * @param medication a menteni kívánt gyogyszer
+	 */
 	public void addMedication(Medication medication){
 		entityManager.getTransaction().begin();
 		
@@ -74,6 +80,9 @@ public class MedicationService {
 		updateList();
 	}
 	
+	/**A paraméterül adott gyógyszer módosításait menti az adatbázisba.
+	 * @param medication a módosított gyógyszer
+	 */
 	public void editMedication(Medication medication){
 		entityManager.getTransaction().begin();
 		
@@ -84,6 +93,9 @@ public class MedicationService {
 		updateList();
 	}
 	
+	/**A paraméterül adott gyógyszert törli az adatbázisból.
+	 * @param medication a törölni kívánt gyógyszer
+	 */
 	public void deleteMedication(Medication medication){
 		entityManager.getTransaction().begin();
 		
@@ -121,6 +133,11 @@ public class MedicationService {
 		else return medication.getUnitprice();
     }
 	
+	/**{@link List} objektummá alakít egy paraméterül kapott {@link pharmacy.model.Medication}
+	 * objektumokat tartalmazó {@link javafx.collections.ObservableList} objektumot.
+	 * @param meds {@link javafx.collections.ObservableList} objektum
+	 * @return {@link java.util.List} objektum
+	 */
 	public List<Medication> convertToList(ObservableList<Medication> meds){
 		List<Medication> medications = new ArrayList<Medication>();
 		for(Medication m : meds){

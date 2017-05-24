@@ -48,19 +48,6 @@ public class Patient {
 	
 	private boolean isDeleted = false;
 
-	public boolean isDeleted() {
-		return isDeleted;
-	}
-
-	public void setDeleted(boolean isDeleted) {
-		this.isDeleted = isDeleted;
-	}
-	
-	@PreRemove
-	public void deletePatient(){
-		this.isDeleted = true;
-	}
-
 	/**
 	 * Üres konstruktor, mely létrehozza a beteg objektumot.
 	 */
@@ -152,25 +139,33 @@ public class Patient {
 		return name;
 	}
 	
-	/**Visszaadja a beteg címét
+	/**Visszaadja a beteg címét.
 	 * @return address a beteg címe
 	 */
 	public String getAddress(){
 		return address;
 	}
 	
-	/**Visszaadja a beteg születési dátumát
+	/**Visszaadja a beteg születési dátumát.
 	 * @return birthdate a beteg születési dátuma
 	 */
 	public LocalDate getBirthdate(){
 		return birthdate;
 	}
 	
-	/**Visszaadja a beteg rangját
+	/**Visszaadja a beteg rangját.
 	 * @return rank a beteg rangja
 	 */
 	public Integer getPatientRank(){
 		return patientRank;
+	}
+	
+
+	/**Visszaadja, hogy egy beteg logikailag törölve lett-e az adatbázisban.
+	 * @return true ha a beteg állapota törölt
+	 */
+	public boolean isDeleted() {
+		return isDeleted;
 	}
 
 	/**Beállítja a beteg azonosítóját.
@@ -213,6 +208,22 @@ public class Patient {
 	 */
 	public void setPatientRank(Integer patientRank){
 		this.patientRank = patientRank;
+	}
+
+	/**Beállítja a beteg törlési állapotát.
+	 * @param isDeleted - true ha törölt a beteg
+	 */
+	public void setDeleted(boolean isDeleted) {
+		this.isDeleted = isDeleted;
+	}
+	
+	
+	/**Logikai törlés előtt beállítja a beteg törlési állapotát
+	 * töröltre.
+	 */
+	@PreRemove
+	public void deletePatient(){
+		this.isDeleted = true;
 	}
 
 	@Override

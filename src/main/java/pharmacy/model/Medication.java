@@ -38,19 +38,6 @@ public class Medication {
 	
 	private boolean isDeleted = false;
 
-	public boolean isDeleted() {
-		return isDeleted;
-	}
-
-	public void setDeleted(boolean isDeleted) {
-		this.isDeleted = isDeleted;
-	}
-	
-	@PreRemove
-	public void deleteMedication(){
-		this.isDeleted = true;
-	}
-	
 
 	/**Paraméter nélküli konstruktor, mely létrehozza a gyógyszer objektumot.
 	 * 
@@ -137,7 +124,7 @@ public class Medication {
 		return new SimpleIntegerProperty(supportedMed);
 	}
 	
-	/**Visszaadja a gyógyszer azonosítóját
+	/**Visszaadja a gyógyszer azonosítóját.
 	 * @return id a gyógyszer azonosítója
 	 */
 
@@ -192,6 +179,13 @@ public class Medication {
 	 */
 	public Integer getSupportedMed(){
 		return supportedMed;
+	}
+
+	/**Visszaadja, hogy egy gyógyszer logikailag törölve lett-e az adatbázisban.
+	 * @return true ha a termék törölve van
+	 */
+	public boolean isDeleted() {
+		return isDeleted;
 	}
 	
 	/**Beállítja a gyógyszer azonosítóját.
@@ -248,6 +242,23 @@ public class Medication {
 	 */
 	public void setSupportedMed(int supportedMed){
 		this.supportedMed = supportedMed;
+	}
+	
+
+	/**Beállítja a gyógyszer törlési állapotát.
+	 * @param isDeleted - true ha törölt a gyógyszer
+	 */
+	public void setDeleted(boolean isDeleted) {
+		this.isDeleted = isDeleted;
+	}
+	
+	
+	/**Logikai törlés előtt beállítja a gyógyszer törlési állapotát
+	 * töröltre.
+	 */
+	@PreRemove
+	public void deleteMedication(){
+		this.isDeleted = true;
 	}
 
 	@Override

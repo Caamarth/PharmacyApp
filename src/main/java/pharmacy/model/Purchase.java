@@ -88,6 +88,9 @@ public class Purchase{
 		return id;
 	}	
 
+	/**Visszaadja a vásárláshoz tartozó vásárlót.
+	 * @return {@link pharmacy.model.Patient} a vásárló objektum
+	 */
 	public Patient getPatient(){
 		return patient;
 	}
@@ -114,10 +117,16 @@ public class Purchase{
 	}
 	
 	
+	/**Beállítja a vásárláshoz a beteg objektumot.
+	 * @param patient a vásárló {@link pharmacy.model.Patient} objektum
+	 */
 	public void setPatient(Patient patient){
 		this.patient = patient;
 	}
 	
+	/**Beállítja a vásárolt gyógyszerek listáját a vásárláshoz.
+	 * @param medications a vásárolt gyógyszerek listája
+	 */
 	public void setMedicationList(List<Medication> medications){
 		this.medicationList = medications;
 	}

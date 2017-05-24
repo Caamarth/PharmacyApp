@@ -22,6 +22,9 @@ public class CartService {
     	purchaseCart = FXCollections.observableArrayList();
 	}
     
+    /**Paraméteres konstruktor a JUnit teszteléshez.
+     * @param purchaseCart gyógyszerek listája
+     */
     public CartService(ObservableList<Medication> purchaseCart){
     	this.purchaseCart = purchaseCart;
     }
@@ -58,6 +61,11 @@ public class CartService {
 				.mapToDouble(i -> i.getUnitprice()*isSupported(i)).sum();
 	}
     
+    /**Visszaad egy szorzó értéket a paraméterül kapott gyógyszer
+     * TB-támogatottságától függően. 
+     * @param medication a vizsgált gyógyszer
+     * @return {@link double} szorzó értéke 
+     */
     public double isSupported(Medication medication){
 		if (medication.getSupportedMed() == 1) {
 			return 0.5;

@@ -32,12 +32,15 @@ public class PatientService {
 		patients = FXCollections.observableArrayList(pharmacyDAO.getPatientsList());
     }
 	
+	/**Paraméteres konstruktor az osztály JUnit teszteléséhez.
+	 * @param patients a gyógyszerek listája
+	 */
 	public PatientService(ObservableList<Patient> patients){
 		this.patients = patients;
 	}
 	
 	
-	public void updateList(){
+	protected void updateList(){
 		ObservableList<Patient> patientList = FXCollections.observableArrayList(pharmacyDAO.getPatientsList());
 		patients.removeAll(patients);
 		for(Patient p : patientList){
@@ -56,6 +59,9 @@ public class PatientService {
     }
 
 	
+	/**A paraméterül kapott beteget mentésre küldi az adatbázisba.
+	 * @param patient a menteni kívánt beteg
+	 */
 	public void addPatient(Patient patient){
 		entityManager.getTransaction().begin();
 		
@@ -70,6 +76,9 @@ public class PatientService {
 		updateList();
 	}
 	
+	/**A paraméterül kapott beteg módosításait menti az adatbázisba.
+	 * @param patient a módosítandó beteg
+	 */
 	public void editPatient(Patient patient){
 		entityManager.getTransaction().begin();
 		
@@ -80,6 +89,9 @@ public class PatientService {
 		updateList();
 	}
 	
+	/**A paraméterül kapott beteget törlsre küldi az adatbázisba.
+	 * @param patient a törölni kívánt beteg
+	 */
 	public void deletePatient(Patient patient){
 		entityManager.getTransaction().begin();
 		
@@ -91,7 +103,7 @@ public class PatientService {
 	}
 
 	/**Visszaadja a beteg azonosítóját
-	 * a TAJ-száma alapján
+	 * a TAJ-száma alapján.
 	 * @param tajszam a beteg TAJ-száma
 	 * @return tempId a beteg azonosítója
 	 */
