@@ -14,6 +14,10 @@ import javafx.collections.ObservableList;
 import pharmacy.model.Medication;
 
 /**A gyógyszereket kezelő osztály.
+ * A gyógyszereket a {@link pharmacy.DAO.PharmacyDAO} osztályon keresztül lekérdezi az
+ * adatbázisból, majd egy {@link java.util.List}-ben kerülnek tárolásra.
+ * Az osztály kapcsolatot tart a felhasználói felület kontrollerrel és az adatbázikezelő
+ * osztállyal.
  * @author Babély Norbert Alex
  *
  */
@@ -39,13 +43,18 @@ public class MedicationService {
 		medications = FXCollections.observableArrayList(pharmacyDAO.getMedicationsList());
     }
 	
-	/**Paraméteres konstruktor az osztály JUnit teszteléséhez.
+	/**Paraméteres konstruktor az osztály JUnit egységteszteléséhez.
 	 * @param medications a gyógyszerek listája
 	 */
 	public MedicationService(ObservableList<Medication> medications){
 		this.medications = medications;
 	}
 	
+	/**Frissíti a gyógyszerek listáját az adatbázisból.
+	 * Csak azok a {@link pharmacy.model.Medication} egyedek kerülnek a
+	 * {@link ObservableList}-be, amelyek {@code isDeleted} értéke false.
+	 * 
+	 */
 	protected void updateList(){
 		ObservableList<Medication> medicationList = FXCollections.observableArrayList(pharmacyDAO.getMedicationsList());
 		medications.removeAll(medications);
@@ -59,6 +68,8 @@ public class MedicationService {
 	}
 
 	/**Visszaadja a gyógyszereket tartalmazó listát.
+	 * Az {@link ObservableList} csak azokat a gyógyszereket tartalmazza, melyek
+	 * {@code isDeleted} értéke false.
 	 * @return medications a gyógyszerek listája
 	 */
 	public ObservableList<Medication> getAllMedications() {
@@ -68,7 +79,7 @@ public class MedicationService {
 		return FXCollections.observableArrayList(filteredMedications);
 	}
 	
-	/**A paraméterül adott gyógyszert mentésre küldi az adatbázisba.
+	/**A paraméterül kapott {@link pharmacy.model.Medication} objektum mentésre küldi az adatbázisba.
 	 * @param medication a menteni kívánt gyogyszer
 	 */
 	public void addMedication(Medication medication){
@@ -88,7 +99,7 @@ public class MedicationService {
 		updateList();
 	}
 	
-	/**A paraméterül adott gyógyszer módosításait menti az adatbázisba.
+	/**A paraméterül kapott {@link pharmacy.model.Medication} objektum módosításait menti az adatbázisba.
 	 * @param medication a módosított gyógyszer
 	 */
 	public void editMedication(Medication medication){
@@ -103,7 +114,7 @@ public class MedicationService {
 		updateList();
 	}
 	
-	/**A paraméterül adott gyógyszert törli az adatbázisból.
+	/**A paraméterül kapott {@link pharmacy.model.Medication} objektumot törli az adatbázisból.
 	 * @param medication a törölni kívánt gyógyszer
 	 */
 	public void deleteMedication(Medication medication){
@@ -118,7 +129,7 @@ public class MedicationService {
 		updateList();
 	}
 
-	/**Visszaad egy gyógyszer objektumot
+	/**Visszaad egy {@link pharmacy.model.Medication} objektumot
 	 * az azonosítója alapján.
 	 * @param id a gyógyszer azonosítója
 	 * @return result a gyógyszer objektum
@@ -134,7 +145,8 @@ public class MedicationService {
     }
 
 	/**Visszaadja egy TB-támogatott gyógyszer
-	 * árát.
+	 * árát. Ha a gyógyszer {@code supportedMed} értéke 1, akkor
+	 * a gyógyszer árának az 50%-át adjuk vissza.
 	 * @param medication a gyóygszer objektum
 	 * @return unitprice a módosított egységár
 	 */

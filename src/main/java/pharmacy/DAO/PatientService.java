@@ -13,6 +13,11 @@ import javafx.collections.ObservableList;
 import pharmacy.model.Patient;
 
 /**A betegeket kezelő osztály.
+ * A betegeket a {@link pharmacy.DAO.PharmacyDAO} osztályon keresztül lekérdezi az
+ * adatbázisból, majd egy {@link java.util.List}-ben kerülnek tárolásra.
+ * Az osztály kapcsolatot tart a felhasználói felület kontrollerrel és az adatbázikezelő
+ * osztállyal. 
+ * A vásárlás összegétől függően beállíthatja a beteg rangját, amit az adatbázisban rögzít.
  * @author Babély Norbert Alex
  *
  */
