@@ -26,7 +26,7 @@ import pharmacy.model.Purchase;
 
 public class PurchaseViewController {
 	
-	private static Logger logger = LoggerFactory.getLogger(MainApp.class);
+	private static Logger logger = LoggerFactory.getLogger(PurchaseViewController.class);
 	
 	@FXML 
 	private Button purchaseToMainButton;
@@ -131,7 +131,7 @@ public class PurchaseViewController {
 			AnchorPane pane = (AnchorPane) loader.load();
 			
 			rootView.setCenter(pane);
-			logger.info("Vissza a főoldalra a PurchaseViewból.");
+			logger.info("Vissza a főoldalra a PurchaseView-ból.");
 		}catch (IOException e){
 			e.printStackTrace();
 		}

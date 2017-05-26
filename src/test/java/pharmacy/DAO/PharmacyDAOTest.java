@@ -46,6 +46,7 @@ public class PharmacyDAOTest {
 		Mockito.when(mockedEntityManager.createQuery("SELECT pch from pharmacy.model.Purchase pch",Purchase.class)).thenReturn(mockedQuery3);
 		Mockito.when(mockedEntityManager.find(Purchase.class, 999)).thenReturn(purchase);
 		Mockito.when(mockedEntityManager.find(Purchase.class, 9999)).thenReturn(null);
+		
 		return mockedEntityManager;
 	}
 	

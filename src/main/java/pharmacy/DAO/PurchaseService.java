@@ -4,8 +4,9 @@ import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,21 +20,22 @@ import pharmacy.model.Purchase;
  */
 public class PurchaseService {
 	
-	EntityManagerFactory entityManagerFactory;
+	private static Logger logger = LoggerFactory.getLogger(PurchaseService.class);
+	
 	EntityManager entityManager;
 	
 	private PharmacyDAO pharmacyDAO;
 
 	private ObservableList<Purchase> purchases;
 	
-	/**Paraméter nélküli konstruktor, amely
+	/**Paraméteres konstruktor, amely
 	 *létrehoz egy {@link pharmacy.DAO.PurchaseService}
 	 *objektumot.
+	 *@param entityManager - {@link javax.persistence.EntityManager} perzisztencia objektum
 	 */
-	public PurchaseService() {	
-		entityManagerFactory = Persistence.createEntityManagerFactory("MainApp");
-		 entityManager = entityManagerFactory.createEntityManager();
-		 pharmacyDAO = new PharmacyDAO(entityManager);
+	public PurchaseService(EntityManager entityManager) {	
+		this.entityManager = entityManager;
+		 pharmacyDAO = new PharmacyDAO(this.entityManager);
 		 purchases = FXCollections.observableArrayList(pharmacyDAO.getPurchasesList());
     }
 	
@@ -52,6 +54,8 @@ public class PurchaseService {
 				purchases.add(p);
 			}
 		}
+		
+		logger.info("Vásárlás lista frissítése...");
 	}
 
 	/**Visszaadja a vásárlásokat tartalmazó listát.
@@ -59,6 +63,7 @@ public class PurchaseService {
 	 *a vásárlásokat tartalmazó lista
 	 */
 	public ObservableList<Purchase> getAllPurchases() {
+		logger.info("Vásárlások listájának lekérése...");
 		updateList();
 		return purchases;
 	}
@@ -76,6 +81,8 @@ public class PurchaseService {
 		pharmacyDAO.createPurchase(patient, price, date, medications);
 		
 		entityManager.getTransaction().commit();
+		
+		logger.info("Új vásárlás mentése az adatbázisba.");
 		
 		updateList();
 	}

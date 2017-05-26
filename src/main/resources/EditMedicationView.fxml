@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pharmacy.view.EditMedicationController">
+<AnchorPane prefHeight="500.0" prefWidth="450.0" styleClass="background" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pharmacy.view.EditMedicationController">
    <children>
       <GridPane prefHeight="400.0" prefWidth="400.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="10.0">
         <columnConstraints>
@@ -39,6 +39,6 @@
          </children>
       </GridPane>
       <Button fx:id="submitEditMedButton" layoutX="30.0" layoutY="450.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Jóváhagy" />
-      <Button fx:id="editMedToMainButton" layoutX="280.0" layoutY="450.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Vissza" />
+      <Button fx:id="editMedToMainButton" layoutX="340.0" layoutY="450.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Vissza" />
    </children>
 </AnchorPane>

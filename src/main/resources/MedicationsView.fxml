@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pharmacy.view.MedicationsViewController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pharmacy.view.MedicationsViewController">
    <children>
       <SplitPane dividerPositions="0.38095238095238093" layoutX="265.0" layoutY="96.0" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -20,17 +20,17 @@
                   </TableView>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="background">
                <children>
                   <Label layoutX="14.0" layoutY="14.0" text="Gyógyszer adatai">
                      <font>
                         <Font name="System Bold Italic" size="16.0" />
                      </font>
                   </Label>
-                  <GridPane layoutX="14.0" layoutY="56.0" prefHeight="350.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
+                  <GridPane layoutX="14.0" layoutY="56.0" prefHeight="378.0" prefWidth="478.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="7.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="187.0" minWidth="10.0" prefWidth="153.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="232.0" minWidth="10.0" prefWidth="232.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="270.0" minWidth="10.0" prefWidth="232.0" />
                     </columnConstraints>
                     <rowConstraints>
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -63,10 +63,10 @@
                         <Label fx:id="medicineManufacturerLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Label fx:id="medicineDoseLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <Label fx:id="medicineQuantityLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <Label fx:id="medicineDescriptionLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                         <Label fx:id="medicineUnitpriceLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                         <Label text="TB-támogatott:" GridPane.rowIndex="7" />
                         <Label fx:id="supportedMedLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <TextArea fx:id="medicineDescriptionLabel" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                      </children>
                   </GridPane>
                   <Button fx:id="deleteMedicationButton" layoutX="220.0" layoutY="550.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Törlés" />

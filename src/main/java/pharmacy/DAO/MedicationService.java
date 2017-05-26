@@ -2,10 +2,12 @@ package pharmacy.DAO;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,7 +19,8 @@ import pharmacy.model.Medication;
  */
 public class MedicationService {
 	
-	EntityManagerFactory entityManagerFactory;
+	private static Logger logger = LoggerFactory.getLogger(MedicationService.class);
+
 	EntityManager entityManager;
 	
 	private PharmacyDAO pharmacyDAO;
@@ -25,15 +28,14 @@ public class MedicationService {
 	private ObservableList<Medication> medications;
         
 
-	/**Paraméter nélküli konstruktor, amely
+	/**Paraméteres konstruktor, amely
 	 * létrehozza a {@link pharmacy.DAO.MedicationService}
 	 * objektumot.
-	 *
+	 *@param entityManager - {@link javax.persistence.EntityManager} perzisztencia objektum
 	 */
-	public MedicationService() {
-		entityManagerFactory = Persistence.createEntityManagerFactory("MainApp");
-		entityManager = entityManagerFactory.createEntityManager();
-		pharmacyDAO = new PharmacyDAO(entityManager);
+	public MedicationService(EntityManager entityManager) {
+		this.entityManager = entityManager;
+		pharmacyDAO = new PharmacyDAO(this.entityManager);
 		medications = FXCollections.observableArrayList(pharmacyDAO.getMedicationsList());
     }
 	
@@ -48,18 +50,22 @@ public class MedicationService {
 		ObservableList<Medication> medicationList = FXCollections.observableArrayList(pharmacyDAO.getMedicationsList());
 		medications.removeAll(medications);
 		for(Medication m : medicationList){
-			if(!medications.contains(m)){
+			if(!medications.contains(m) && m.isDeleted() != true){
 				medications.add(m);
 			}
 		}
+		
+		logger.info("Gyógyszer lista frissítése...");
 	}
 
 	/**Visszaadja a gyógyszereket tartalmazó listát.
 	 * @return medications a gyógyszerek listája
 	 */
 	public ObservableList<Medication> getAllMedications() {
+		logger.info("Gyógyszerek listájának lekérése.");
 		updateList();
-		return medications;
+		List<Medication> filteredMedications = medications.stream().filter(e -> e.isDeleted() != true).collect(Collectors.toList());
+		return FXCollections.observableArrayList(filteredMedications);
 	}
 	
 	/**A paraméterül adott gyógyszert mentésre küldi az adatbázisba.
@@ -77,6 +83,8 @@ public class MedicationService {
 		
 		entityManager.getTransaction().commit();
 		
+		logger.info("{} hozzáadása az adatbázishoz.",medication.getName());
+		
 		updateList();
 	}
 	
@@ -90,6 +98,8 @@ public class MedicationService {
 		
 		entityManager.getTransaction().commit();
 		
+		logger.info("{} módosításainak mentése az adatbázisban.",medication.getName());
+		
 		updateList();
 	}
 	
@@ -102,6 +112,8 @@ public class MedicationService {
 		pharmacyDAO.deleteMedication(medication.getId());
 		
 		entityManager.getTransaction().commit();
+		
+		logger.info("{} törlése az adatbázisból!",medication.getName());
 		
 		updateList();
 	}

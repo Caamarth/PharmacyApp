@@ -2,6 +2,10 @@ package pharmacy;
 
 import java.io.IOException;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,6 +23,9 @@ import pharmacy.view.MainSceneController;
 
 /**A program belépési pontja, amely az indítás után létrehozza a kezelőosztályokat,
  * és a kezdőfelületet.
+ * Ebben az osztályban jön létre az {@link EntityManager} objektum, ami az adatbázis
+ * kapcsolatot alakítja ki az adatbázissal. Az {@link EntityManager} kapcsolat lezárása
+ * a program bezárásakor a {@code stop()} metódus automatikus hívásánál történik meg.
  * @author Babély Norbert Alex
  *
  */
@@ -32,6 +39,23 @@ public class MainApp extends Application {
 	private MedicationService medicationService;
 	private PurchaseService purchaseService;
 	private CartService cartService;
+	
+	EntityManagerFactory entityManagerFactory;
+	EntityManager entityManager;
+	
+	/**A {@link pharmacy.MainApp} paraméter nélküli konstruktora.
+	 * 
+	 */
+	public MainApp(){
+		
+		entityManagerFactory = Persistence.createEntityManagerFactory("MainApp");
+		entityManager = entityManagerFactory.createEntityManager();
+		
+		this.medicationService = new MedicationService(entityManager);
+		this.patientService = new PatientService(entityManager);
+		this.cartService = new CartService();
+		this.purchaseService = new PurchaseService(entityManager);
+	}
 	
 	/**Visszaadja a {@link pharmacy.DAO.PatientService} betegkezelő-osztály objektumot.
 	 * @return {@link pharmacy.DAO.PatientService}
@@ -98,33 +122,41 @@ public class MainApp extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) {
+		logger.info("Program indítása...");
+		
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("PharmacyApp");
-		this.medicationService = new MedicationService();
-		this.patientService = new PatientService();
-		this.cartService = new CartService();
-		this.purchaseService = new PurchaseService();
+
 		initRootLayout();
 		
 		showMainScene();
+	}
+	
+	@Override
+	public void stop() throws InterruptedException{
+		logger.info("EntityManager lezására...");
+		entityManager.close();
+		logger.info("Program bezására...");
 	}
 
 	/**Inicializálja a program elsődleges {@link javafx.stage.Stage}-ét, és hozzárendeli
 	 * a kontrollert.
 	 * 
 	 */
-	public void initRootLayout(){
+	public void initRootLayout(){	
 		try{
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("/rootLayout.fxml"));
 			rootLayout = (BorderPane) loader.load();
+			
+			logger.info("Keret betöltése...");
 			
 			Scene scene = new Scene(rootLayout);
 			primaryStage.setScene(scene);
 			primaryStage.show();
 			
 		} catch (IOException e){
-			logger.error("IOException történt!",e.getMessage());
+			logger.error("IOException történt! {}",e.getMessage());
 		}
 	}
 
@@ -133,15 +165,19 @@ public class MainApp extends Application {
 	 */
 	public void showMainScene(){
 		try{
+			logger.info("Főoldal betöltése...");
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("/MainScene.fxml"));
+
 			AnchorPane mainScene = (AnchorPane) loader.load();
 			rootLayout.setCenter(mainScene);
 			
 			MainSceneController controller = loader.getController();
 			controller.setMainApp(this);
+			
+			logger.info("Ugrás a főoldalra...");
 		}catch (IOException e){
-			logger.error("IOException történt!",e.getMessage());
+			logger.error("IOException történt! {}",e.getMessage());
 			
 		}
 	}

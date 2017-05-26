@@ -1,5 +1,8 @@
 package pharmacy.view;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -11,6 +14,7 @@ import pharmacy.model.Patient;
 
 public class EditPatientController {
 	
+	private static Logger logger = LoggerFactory.getLogger(EditPatientController.class);
 	@FXML
 	private Button editPatientToMainButton;
 	@FXML
@@ -30,6 +34,7 @@ public class EditPatientController {
 	
 	@FXML
 	private void initialize(){
+		logger.info("Beteg dialógus ablak megnyitása...");
 		submitEditPatientButton.setOnMouseClicked(e -> handleOk());
 		editPatientToMainButton.setOnMouseClicked(e -> handleCancel());
 	}
@@ -67,6 +72,7 @@ public class EditPatientController {
 	
 	@FXML 
 	private void handleCancel(){
+		logger.info("Beteg dialógus ablak bezására...");
 		editDialogStage.close();
 	}
 	

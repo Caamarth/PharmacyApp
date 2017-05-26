@@ -11,12 +11,13 @@
 	
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/pharmacy"/>
-			<property name="javax.persistence.jdbc.user" value="Caamarth"/>
-			<property name="javax.persistence.jdbc.password" value="password"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://sql11.freemysqlhosting.net/sql11176473"/>
+			<property name="javax.persistence.jdbc.user" value="sql11176473"/>
+			<property name="javax.persistence.jdbc.password" value="KuD3CEtaGV"/>
 			<property name="hibernate.use_sql_comments" value="true"/>
 			<property name="hibernate.format.sql" value="true"/>
 			<property name="hibernate.show.sql" value="true"/>
+<!--  			<property name="hibernate.hbm2ddl.auto" value="create"/> -->
 		</properties>
 	</persistence-unit>
 </persistence>

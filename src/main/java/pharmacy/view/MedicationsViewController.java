@@ -2,6 +2,9 @@ package pharmacy.view;
 
 import java.io.IOException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -11,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
@@ -20,6 +24,8 @@ import pharmacy.DAO.MedicationService;
 import pharmacy.model.Medication;
 
 public class MedicationsViewController {
+	
+	private static Logger logger = LoggerFactory.getLogger(MedicationsViewController.class);
 
 	@FXML
 	private Button newMedicationButton;
@@ -38,7 +44,7 @@ public class MedicationsViewController {
 	@FXML
 	private Label medicineIdLabel;
 	@FXML
-	private Label medicineDescriptionLabel;
+	private TextArea medicineDescriptionLabel;
 	@FXML
 	private Label medicineDoseLabel;
 	@FXML
@@ -88,6 +94,8 @@ public class MedicationsViewController {
 			medicineDoseLabel.setText(Integer.toString(medication.getDose()));
 			medicineQuantityLabel.setText(medication.getQuantity().toString());
 			medicineDescriptionLabel.setText(medication.getDescription());
+			medicineDescriptionLabel.setEditable(false);
+			medicineDescriptionLabel.setWrapText(true);
 			medicineUnitpriceLabel.setText(Integer.toString(medication.getUnitprice()));
 			if (medication.getSupportedMed() == 0) {
 				supportedMedLabel.setText("Nem TB-támogatott");
@@ -130,7 +138,7 @@ public class MedicationsViewController {
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch (IOException e){
-			e.printStackTrace();
+			logger.error("IOException történt! {}",e.getMessage());
 		}
 	}
 	
@@ -144,7 +152,7 @@ public class MedicationsViewController {
 			
 			rootView.setCenter(pane);
 		}catch (IOException e){
-			e.printStackTrace();
+			logger.error("IOException történt! {}",e.getMessage());
 		}
 	}
 	
@@ -155,6 +163,7 @@ public class MedicationsViewController {
 		medicineDoseLabel.setText("");
 		medicineQuantityLabel.setText("");
 		medicineDescriptionLabel.setText("");
+		medicineDescriptionLabel.setEditable(false);
 		medicineUnitpriceLabel.setText("");
 		supportedMedLabel.setText("");
 	}
@@ -199,7 +208,7 @@ public class MedicationsViewController {
 			
 			return controller.isOkClicked();
 		} catch (IOException e){
-			e.printStackTrace();
+			logger.error("IOException történt! {}",e.getMessage());
 			return false;
 		}
 	}

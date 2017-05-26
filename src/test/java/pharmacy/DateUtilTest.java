@@ -41,7 +41,12 @@ public class DateUtilTest {
 	@Test
 	public void testValidater(){
 		testString = "1990.07.29";
-		boolean testResult = true;
-		Assert.assertEquals(testResult, DateUtil.validDate(testString));
+		Assert.assertEquals(true, DateUtil.validDate(testString));
+	}
+	
+	@Test
+	public void testValidaterFail(){
+		testString = "2010-08-12";
+		Assert.assertEquals(false, DateUtil.validDate(testString));
 	}
 }

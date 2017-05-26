@@ -11,7 +11,6 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.ResultCheckStyle;
 import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javafx.beans.property.IntegerProperty;
@@ -30,7 +29,7 @@ import javafx.beans.property.StringProperty;
  */
 @Entity
 @SQLDelete(sql = "UPDATE Patient SET isDeleted = 1 WHERE ID = ?",check = ResultCheckStyle.COUNT)
-@Where(clause = "isDeleted = 'true'")
+//@Where(clause = "isDeleted = 'true'")
 public class Patient {
 
 	@Id

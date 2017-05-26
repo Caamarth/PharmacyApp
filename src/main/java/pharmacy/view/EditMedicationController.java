@@ -1,16 +1,21 @@
 package pharmacy.view;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import pharmacy.model.Medication;
 
 public class EditMedicationController {
+	
+	private static Logger logger = LoggerFactory.getLogger(EditMedicationController.class);
 	@FXML
 	private Button editMedToMainButton;
 	@FXML
@@ -36,6 +41,7 @@ public class EditMedicationController {
 	
 	@FXML
 	private void initialize(){
+		logger.info("Gyógyszer dialógus ablak megnyitása...");
 		submitEditMedButton.setOnMouseClicked(e -> handleOk());
 		editMedToMainButton.setOnMouseClicked(e -> handleCancel());
 	}
@@ -88,6 +94,7 @@ public class EditMedicationController {
 	
 	@FXML
 	private void handleCancel(){
+		logger.info("Gyógyszer dialógus ablak bezására");
 		editDialogStage.close();
 	}
 	

@@ -2,6 +2,9 @@ package pharmacy.view;
 
 import java.io.IOException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -21,6 +24,8 @@ import pharmacy.DAO.PatientService;
 import pharmacy.model.Patient;
 
 public class PatientsViewController {
+	
+	private static Logger logger = LoggerFactory.getLogger(PatientsViewController.class);
 
 	@FXML
 	private Button newPatientButton;
@@ -132,7 +137,7 @@ public class PatientsViewController {
 			
 			
 			rootView.setCenter(pane);
-			
+			logger.info("VIssza a főoldalra a PatientsView-ból.");
 			
 		}catch (IOException e){
 			e.printStackTrace();

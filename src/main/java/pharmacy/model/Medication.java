@@ -8,7 +8,6 @@ import javax.persistence.PreRemove;
 
 import org.hibernate.annotations.ResultCheckStyle;
 import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -22,7 +21,7 @@ import javafx.beans.property.StringProperty;
 
 @Entity
 @SQLDelete(sql = "UPDATE Medication SET isDeleted = 1 WHERE ID = ?",check = ResultCheckStyle.COUNT)
-@Where(clause = "isDeleted = 'true'")
+//@Where(clause = "isDeleted = 'true'")
 public class Medication {
 	
 	@Id

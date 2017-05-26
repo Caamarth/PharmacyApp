@@ -4,6 +4,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**Dátumformázó osztály, amely egy {@link java.time.LocalDate} objektumot formáz meg a
  * {@link java.time.format.DateTimeFormatter} segítségével.
  * @author Babély Norbert Alex
@@ -11,6 +14,7 @@ import java.time.format.DateTimeParseException;
  */
 public class DateUtil {
 
+	private static Logger logger = LoggerFactory.getLogger(MainApp.class);
 	private static final String DATE_PATTERN = "yyyy.MM.dd";
 
 	private static final DateTimeFormatter DATE_FORMATTER = 
@@ -39,6 +43,7 @@ public class DateUtil {
 		try {
 			return DATE_FORMATTER.parse(dateString, LocalDate::from);
 		} catch (DateTimeParseException e) {
+			logger.info("Sikertelen formázás: hibás formátum!");
 			return null;
 		}
 	}

@@ -40,8 +40,6 @@
   	<mainClass>pharmacy.MainApp</mainClass>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    
-    <hsqldb.version>2.4.0</hsqldb.version>
   </properties>
   
   <dependencies>
@@ -178,47 +176,6 @@
 		        <mainClass>${mainClass}</mainClass>
 		    </configuration>
 		</plugin>
-		
-		<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.6.0</version>
-				<executions>
-					<execution>
-						<id>run-manager</id>
-						<configuration>
-							<mainClass>org.hsqldb.util.DatabaseManagerSwing</mainClass>
-						</configuration>
-					</execution>
-					<execution>
-						<id>run-sqltool</id>
-						<configuration>
-							<mainClass>org.hsqldb.cmdline.SqlTool</mainClass>
-							<arguments>
-								<argument>--rcFile=sqltool.rc</argument>
-								<argument>test</argument>
-							</arguments>
-						</configuration>
-					</execution>
-					<execution>
-						<id>start-server</id>
-						<configuration>
-							<mainClass>org.hsqldb.server.Server</mainClass>
-						</configuration>
-					</execution>
-					<execution>
-						<id>stop-server</id>
-						<configuration>
-							<mainClass>org.hsqldb.cmdline.SqlTool</mainClass>
-							<arguments>
-								<argument>--rcFile=sqltool.rc</argument>
-								<argument>--sql=SHUTDOWN;</argument>
-								<argument>test</argument>
-							</arguments>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
 			
 			<plugin>
 				<groupId>org.jacoco</groupId>

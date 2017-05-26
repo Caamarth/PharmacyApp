@@ -10,7 +10,6 @@ import javax.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import pharmacy.MainApp;
 import pharmacy.model.Medication;
 import pharmacy.model.Patient;
 import pharmacy.model.Purchase;
@@ -22,12 +21,12 @@ import pharmacy.model.Purchase;
 @Transactional
 public class PharmacyDAO {
 	
-	private static Logger logger = LoggerFactory.getLogger(MainApp.class);
+	private static Logger logger = LoggerFactory.getLogger(PharmacyDAO.class);
 
     private EntityManager entityManager;
     
     /**Paraméteres konstruktor, amely egy {@link pharmacy.DAO.PharmacyDAO} objektumot hoz létre.
-     * @param entityManager egy {@link EntityManager} objektum
+     * @param entityManager egy {@link javax.persistence.EntityManager} objektum
      */
     public PharmacyDAO(EntityManager entityManager){
     	this.entityManager = entityManager;
@@ -68,7 +67,6 @@ public class PharmacyDAO {
     public Patient createPatient(String tajszam, String name,
 			String address, LocalDate birthdate, int patientRank) {
     	Patient patient = new Patient(tajszam, name, address, birthdate, patientRank);
-    	
     	entityManager.persist(patient);
     	return patient;
     }
@@ -158,7 +156,7 @@ public class PharmacyDAO {
     	if (patient != null) {
     		entityManager.remove(patient);
     	} else {
-    		logger.info("A {0} azonosítójú beteg sikertelen törlése...",id);
+    		logger.info("A {} azonosítójú beteg sikertelen törlése...",id);
     	}
     }
     
@@ -171,7 +169,7 @@ public class PharmacyDAO {
     	if (medication != null) {
     		entityManager.remove(medication);
     	} else {
-    		logger.info("A {0} azonosítójú gyógyszer sikertelen törlése...",id);
+    		logger.info("A {} azonosítójú gyógyszer sikertelen törlése...",id);
     	}
     	
     }

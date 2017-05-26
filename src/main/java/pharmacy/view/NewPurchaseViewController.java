@@ -33,7 +33,7 @@ import pharmacy.model.Medication;
 
 public class NewPurchaseViewController {
 	
-	private static Logger logger = LoggerFactory.getLogger(MainApp.class);
+	private static Logger logger = LoggerFactory.getLogger(NewPurchaseViewController.class);
 	
 	@FXML
 	private Button newPurchaseToMainButton;
@@ -173,7 +173,7 @@ public class NewPurchaseViewController {
 		try{
 			loader.setLocation(MainApp.class.getResource("/MainScene.fxml"));
 			AnchorPane pane = (AnchorPane) loader.load();
-			
+			logger.info("Vissza a főoldalra a NewPurchaseView-ból.");
 			rootView.setCenter(pane);
 		}catch (IOException e){
 			//e.printStackTrace();
@@ -182,16 +182,20 @@ public class NewPurchaseViewController {
 	}
 	
 	private void addToCart(Medication medication){
-		mainApp.getCartService().getCartMedications().add(medication);
-		getSumValue();
+		//mainApp.getCartService().getCartMedications().add(medication);
+		if(medication != null){
+			cartService.addToCart(medication);
+			getSumValue();
+		}
 	}
 	
 	private void removeFromCart(Medication medication){
-		int selectedIndex = cartTableView.getSelectionModel().getSelectedIndex();
-		if(selectedIndex >= 0){
-			mainApp.getCartService().getCartMedications().remove(selectedIndex);
+		//int selectedIndex = cartTableView.getSelectionModel().getSelectedIndex();
+		//Medication selectedMed = cartTableView.getSelectionModel().getSelectedItem();
+		if(medication != null){
+			//mainApp.getCartService().getCartMedications().remove(selectedIndex);
 //			cartTableView.getItems().remove(selectedIndex);
-
+			cartService.removeFromCart(medication);
 			getSumValue();
 		} else {
 			Alert alert = new Alert(AlertType.WARNING);

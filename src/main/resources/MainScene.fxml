@@ -6,35 +6,36 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pharmacy.view.MainSceneController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="background" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pharmacy.view.MainSceneController">
    <children>
       <Pane prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="-4.0" AnchorPane.leftAnchor="31.0" AnchorPane.rightAnchor="-31.0" AnchorPane.topAnchor="4.0">
          <children>
-            <Button fx:id="newPurchaseButton" layoutX="100.0" layoutY="260.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="260.0" text="ÚJ VÁSÁRLÁS" textAlignment="CENTER">
+            <Button fx:id="newPurchaseButton" layoutX="100.0" layoutY="260.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="260.0" styleClass="button-startpage" text="ÚJ VÁSÁRLÁS" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="medicationsButton" layoutX="450.0" layoutY="260.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="260.0" text="GYÓGYSZEREK">
+            <Button fx:id="medicationsButton" layoutX="450.0" layoutY="260.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="260.0" styleClass="button-startpage" text="GYÓGYSZEREK">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="patientsButton" layoutX="100.0" layoutY="420.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="260.0" text="BETEGEK">
+            <Button fx:id="patientsButton" layoutX="100.0" layoutY="420.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="260.0" styleClass="button-startpage" text="BETEGEK">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Label fx:id="mainLabel" alignment="CENTER" layoutX="320.0" layoutY="60.0" text="PharmacyApp">
+            <Label fx:id="mainLabel" alignment="CENTER" layoutX="378.0" layoutY="89.0" styleClass="label-header" text="PharmacyApp">
                <font>
                   <Font name="System Bold" size="50.0" />
                </font>
             </Label>
-            <Button fx:id="purchasesButton" layoutX="450.0" layoutY="420.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="260.0" text="VÁSÁRLÁSOK">
+            <Button fx:id="purchasesButton" layoutX="450.0" layoutY="420.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="260.0" styleClass="button-startpage" text="VÁSÁRLÁSOK">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
+            <Button fx:id="exitButton" layoutX="660.0" layoutY="20.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Kilépés" />
          </children>
       </Pane>
    </children>
