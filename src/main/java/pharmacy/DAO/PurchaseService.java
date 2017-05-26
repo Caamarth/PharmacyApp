@@ -15,6 +15,10 @@ import pharmacy.model.Patient;
 import pharmacy.model.Purchase;
 
 /**A vásárlások kezelését megvalósító osztály.
+ * A vásárlásokat a {@link pharmacy.DAO.PharmacyDAO} osztályon keresztül lekérdezi az
+ * adatbázisból, majd egy {@link java.util.List}-ben kerülnek tárolásra.
+ * Az osztály kapcsolatot tart a felhasználói felület kontrollerrel és az adatbázikezelő
+ * osztállyal.
  * @author Babély Norbert Alex
  *
  */
@@ -46,6 +50,9 @@ public class PurchaseService {
 		this.purchases = purchases;
 	}
 	
+	/**Frissíti a vásárlások listáját az adatbázisból.
+	 * 
+	 */
 	protected void updateList(){
 		ObservableList<Purchase> purchaseList = FXCollections.observableArrayList(pharmacyDAO.getPurchasesList());
 		purchases.removeAll(purchases);
@@ -68,8 +75,8 @@ public class PurchaseService {
 		return purchases;
 	}
 
-	/**Hozzáad egy vásárlást a vásárlásokat
-	 *tartalmazó listához.
+	/**Továbbadja a paraméterül kapott adatokat a {@link pharmacy.DAO.PharmacyDAO} osztálynak,
+	 * ami létrehoz egy új vásárlás objektumot és elmenti az adatbázisba.
 	 * @param patient a vásárláshoz tartozó beteg
 	 * @param price a vásárlás összege
 	 * @param date a vásárlás dátuma
@@ -89,6 +96,8 @@ public class PurchaseService {
 
 	/**A beteg rangja alapján csökkenti a vásárlás
 	 *végösszegének értékét, majd visszaadja azt.
+	 *Ha a {@link pharmacy.model.Patient} {@code patientRank} értéke
+	 *2, akkor 90%-os, ha 1, akkor 95%os árat ad vissza.
 	 * @param rank a beteg rangja
 	 * @param value a vásárlás módosítás előtti értéke
 	 * @return discount a vásárlás módosított értéke

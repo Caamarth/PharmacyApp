@@ -9,6 +9,9 @@ import org.slf4j.LoggerFactory;
 
 /**Dátumformázó osztály, amely egy {@link java.time.LocalDate} objektumot formáz meg a
  * {@link java.time.format.DateTimeFormatter} segítségével.
+ * A {@code DATE_PATTERN} határozza meg a formátumot string formájában.
+ * A {@link java.time.LocalDate} formátuma: {@code yyyy.mm.dd}, ahol 'yyyy' az évet, 
+ * 'mm' a hónapot, 'dd' a napot jelöli.
  * @author Babély Norbert Alex
  *
  */
