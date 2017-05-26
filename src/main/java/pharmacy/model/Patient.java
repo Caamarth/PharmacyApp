@@ -29,7 +29,6 @@ import javafx.beans.property.StringProperty;
  */
 @Entity
 @SQLDelete(sql = "UPDATE Patient SET isDeleted = 1 WHERE ID = ?",check = ResultCheckStyle.COUNT)
-//@Where(clause = "isDeleted = 'true'")
 public class Patient {
 
 	@Id

@@ -34,7 +34,7 @@ public class PatientService {
 	/**Paraméteres kontstruktor,
 	 * amely létrehozza a {@link pharmacy.DAO.PatientService}
 	 * objektumot.
-	 * @param entityManager - {@link javax.persistence.EntityManager} perzisztencia objektum
+	 * @param entityManager {@link javax.persistence.EntityManager} perzisztencia objektum
 	 */
 	public PatientService(EntityManager entityManager) {
 		this.entityManager = entityManager;
