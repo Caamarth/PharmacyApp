@@ -21,11 +21,11 @@ A Maven legfrissebb verziója az alábbi linken érhető el:
 
 ## Telepítés
 
-A program telepítéséhez az 
+A program telepítése az 
 ```
-mvn install 
+mvn package
 ```
-parancs szükséges a program főkönyvtárában.
+paranccsal lehetséges a program főkönyvtárában.
 
 Az API dokumentáció és jelentések elkészíthetőek az 
 ```
