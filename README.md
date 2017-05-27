@@ -6,7 +6,7 @@ Debreceni Egyetem Informatikai Kar 2016/17 2. félévében.
 ## Motiváció
 
 A program egy gyógyszertári pénztáralkalmazás, amely Hibernate és JPA 
-segítéségével relációs adatbázissal valósítja meg az adattárolást, ami a Debeceni Egyetem Informatikai Karának Programozási Technológiák és Programozási Környezetek tantárgy beadandó feladataként készült.
+segítségével relációs adatbázissal valósítja meg az adattárolást, ami a Debeceni Egyetem Informatikai Karának Programozási Technológiák és Programozási Környezetek tantárgy beadandó feladataként készült.
 
 
 ## Telepítéshez szükséges programok
