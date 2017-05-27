@@ -24,10 +24,10 @@
          <children>
             <Label text="Név:" />
             <Label text="Gyártó:" GridPane.rowIndex="1" />
-            <Label text="Dózis:" GridPane.rowIndex="2" />
+            <Label text="Dózis (mg):" GridPane.rowIndex="2" />
             <Label text="Tablettaszám:" GridPane.rowIndex="3" />
             <Label text="Leírás:" GridPane.rowIndex="4" />
-            <Label text="Egységár:" GridPane.rowIndex="5" />
+            <Label text="Egységár (Ft):" GridPane.rowIndex="5" />
             <Label text="TB-támogatott:" GridPane.rowIndex="6" />
             <TextField fx:id="editNameTextField" GridPane.columnIndex="1" />
             <TextField fx:id="editManufacturerTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />

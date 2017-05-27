@@ -57,7 +57,7 @@
                         <Label text="Hatóanyag dózis (mg):" GridPane.rowIndex="3" />
                         <Label text="Tabletták száma:" GridPane.rowIndex="4" />
                         <Label text="Leírás:" GridPane.rowIndex="5" />
-                        <Label text="Egységár:" GridPane.rowIndex="6" />
+                        <Label text="Egységár (Ft):" GridPane.rowIndex="6" />
                         <Label fx:id="medicineIdLabel" text="Label" GridPane.columnIndex="1" />
                         <Label fx:id="medicineNameLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Label fx:id="medicineManufacturerLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
