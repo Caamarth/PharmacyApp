@@ -110,7 +110,14 @@ public class PatientsViewController {
 	}
 	
 	public void setTableContent(){
+		patientTableView.getColumns().clear();
+		patientTableView.getColumns().add(patientTajColumn);
+		patientTableView.getColumns().add(patientNameColumn);
+		
 		patientTableView.setItems(patientService.getAllPatients());
+		
+		patientTajColumn.setCellValueFactory(cd -> cd.getValue().getTajszamProperty());
+		patientNameColumn.setCellValueFactory(cd -> cd.getValue().getNameProperty());
 	}
 	
 	private void loadRootView(){
@@ -159,6 +166,7 @@ public class PatientsViewController {
 		if(selectedIndex != null){
 			patientService.deletePatient(selectedIndex);
 			resetLabels();
+			setTableContent();
 		} else {
 			Alert alert = new Alert(AlertType.WARNING);
 	        alert.initOwner(mainApp.getPrimaryStage());
@@ -204,6 +212,7 @@ public class PatientsViewController {
 		boolean okClicked = showPersonEditDialog(tempPatient);
 		if(okClicked){
 			patientService.addPatient(tempPatient);
+			setTableContent();
 		}
 	}
 	

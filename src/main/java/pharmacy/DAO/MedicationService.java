@@ -74,7 +74,7 @@ public class MedicationService {
 	 */
 	public ObservableList<Medication> getAllMedications() {
 		logger.info("Gyógyszerek listájának lekérése.");
-		updateList();
+//		updateList();
 		List<Medication> filteredMedications = medications.stream().filter(e -> e.isDeleted() != true).collect(Collectors.toList());
 		return FXCollections.observableArrayList(filteredMedications);
 	}

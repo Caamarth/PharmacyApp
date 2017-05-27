@@ -124,7 +124,15 @@ public class MedicationsViewController {
 	}
 	
 	public void setTableContent(){
+		medicationTableView.getColumns().clear();
+		medicationTableView.getColumns().add(medicationNameColumn);
+		medicationTableView.getColumns().add(manufacturerColumn);
+		
 		medicationTableView.setItems(medicationService.getAllMedications());
+		
+		medicationNameColumn.setCellValueFactory(cd -> cd.getValue().getNameProperty());
+		manufacturerColumn.setCellValueFactory(cd -> cd.getValue().getManufacturerProperty());
+		
 	}
 	
 	private void loadRootView(){
@@ -174,6 +182,7 @@ public class MedicationsViewController {
 		if(selectedMed != null){
 			medicationService.deleteMedication(selectedMed);
 			resetLabels();
+			setTableContent();
 			
 		} else {
 			Alert alert = new Alert(AlertType.WARNING);
@@ -219,6 +228,7 @@ public class MedicationsViewController {
 		boolean okClicked = showMedicationEditDialog(tempMedication);
 		if(okClicked){
 			medicationService.addMedication(tempMedication);
+			setTableContent();
 		}
 	}
 	

@@ -54,7 +54,7 @@
                            </font>
                         </Label>
                         <Label text="Gyártó neve:" GridPane.rowIndex="2" />
-                        <Label text="Hatóanyag dózis:" GridPane.rowIndex="3" />
+                        <Label text="Hatóanyag dózis (mg):" GridPane.rowIndex="3" />
                         <Label text="Tabletták száma:" GridPane.rowIndex="4" />
                         <Label text="Leírás:" GridPane.rowIndex="5" />
                         <Label text="Egységár:" GridPane.rowIndex="6" />
@@ -64,7 +64,7 @@
                         <Label fx:id="medicineDoseLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <Label fx:id="medicineQuantityLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                         <Label fx:id="medicineUnitpriceLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                        <Label text="TB-támogatott:" GridPane.rowIndex="7" />
+                        <Label text="Támogatottság:" GridPane.rowIndex="7" />
                         <Label fx:id="supportedMedLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                         <TextArea fx:id="medicineDescriptionLabel" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                      </children>

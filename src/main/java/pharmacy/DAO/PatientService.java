@@ -74,7 +74,7 @@ public class PatientService {
 	 */
 	public ObservableList<Patient> getAllPatients() {
 		logger.info("Betegek listájának lekérése.");
-		updateList();
+//		updateList();
 		List<Patient> filteredPatients = patients.stream().filter(e -> e.isDeleted() != true).collect(Collectors.toList());
 		return FXCollections.observableArrayList(filteredPatients);
     }
