@@ -40,4 +40,4 @@ Babély Norbert Alex - [Caamarth](https://github.com/Caamarth)
 ## License
 
 Ez a program az Apache License 2.0 alatt készült.
-Részletekért lásd a [License.txt](License.txt) fájlt.
+Részletekért lásd a [LICENSE.txt](LICENSE.txt) fájlt.
